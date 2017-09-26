@@ -35,7 +35,7 @@
             android:width="100dp"
             android:height="100dp"
             android:layout_gravity="center"
-            android:background="@mipmap/ic_launcher" />
+            android:background="@mipmap/X_icon" />
 
         <Button
             android:id="@+id/button2"
