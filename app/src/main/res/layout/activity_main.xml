@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:columnCount="3"
         android:rowCount="3"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_gravity="center"
         tools:context=".MainActivity">
 
@@ -36,7 +36,7 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="false"
+            android:tag="1"
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
 
@@ -46,7 +46,7 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="false"
+            android:tag="2"
             android:onClick="onClick"
             android:background="@drawable/o_icon" />
 
@@ -56,7 +56,7 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="false"
+            android:tag="3"
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
 
@@ -66,7 +66,7 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="false"
+            android:tag="4"
             android:onClick="onClick"
             android:background="@drawable/o_icon" />
         <Button
@@ -75,7 +75,7 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="false"
+            android:tag="5"
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
 
@@ -85,7 +85,7 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="false"
+            android:tag="6"
             android:onClick="onClick"
             android:background="@drawable/o_icon" />
 
@@ -95,7 +95,7 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="false"
+            android:tag="7"
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
 
@@ -105,7 +105,7 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="false"
+            android:tag="8"
             android:onClick="onClick"
             android:background="@drawable/o_icon" />
         <Button
@@ -114,7 +114,7 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="false"
+            android:tag="9"
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
     </GridLayout>

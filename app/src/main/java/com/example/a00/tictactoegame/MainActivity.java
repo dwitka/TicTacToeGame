@@ -7,12 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
+
+import static android.R.attr.tag;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     static String x;
     static String o;
     static String[] List;
+    public static ArrayList<Button> buttonList;
     static Random random;
     Context context = this;
 
@@ -24,6 +28,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List = new String[9];
         x = "x";
         o = "o";
+        buttonList = new ArrayList<>();
+
+        addButtonsToList();
+
+    }
+
+    public void addButtonsToList() {
+        Button button1 = (Button)findViewById(R.id.button1);
+        buttonList.add(0, button1);
+        Button button2 = (Button)findViewById(R.id.button2);
+        buttonList.add(1, button2);
+        Button button3 = (Button)findViewById(R.id.button3);
+        buttonList.add(2, button3);
+        Button button4 = (Button)findViewById(R.id.button4);
+        buttonList.add(3, button4);
+        Button button5 = (Button)findViewById(R.id.button5);
+        buttonList.add(4, button5);
+        Button button6 = (Button)findViewById(R.id.button6);
+        buttonList.add(5, button6);
+        Button button7 = (Button)findViewById(R.id.button7);
+        buttonList.add(6, button7);
+        Button button8 = (Button)findViewById(R.id.button8);
+        buttonList.add(7, button8);
+        Button button9 = (Button)findViewById(R.id.button9);
+        buttonList.add(8, button9);
 
     }
 
@@ -32,17 +61,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int buttonId = view.getId();
         Button button = (Button)findViewById(buttonId);
-        Toast.makeText(context, String.valueOf(buttonId), Toast.LENGTH_LONG).show();
-        //List[buttonId] = x;
+        int tag = Integer.parseInt(String.valueOf(button.getTag()));
+        Toast.makeText(context, String.valueOf(button.getTag()), Toast.LENGTH_LONG).show();
+        List[tag] = x;
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
-        computerMoves(context, buttonId);
+        computerMoves();
     }
 
-    public static void computerMoves(Context context,int buttonId){
-        for (int index=0; index<9; index++ ){
-
+    public void computerMoves(){
+        int rand = random.nextInt(9);
+        if (List[rand] == null) {
+            List[rand] = o;
+        } else {
+            computerMoves();
         }
+        for (int index=0; index<9; index++) {
+
+            Button button = (Button)findViewById(R.id.button1);
+
+
 
     }
 
