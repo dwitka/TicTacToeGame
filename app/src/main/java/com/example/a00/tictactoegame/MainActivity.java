@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -63,12 +64,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List[tag] = x;
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
+        checkForWinner();
         computersTurn();
     }
 
 
     public void computersTurn(){
-        textview.setText(R.string.computers_turn);
+        //textview.setText(R.string.computers_turn);
         random = new Random();
         int rand = random.nextInt(9);
         Button button = buttonList.get(rand);
@@ -76,10 +78,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             button.setBackgroundResource(R.drawable.o_icon);
             button.setAlpha(1.0f);
             List[rand] = o;
+            checkForWinner();
         } else {
             computersTurn();
         }
-        textview.setText(R.string.your_turn);
+        //textview.setText(R.string.your_turn);
     }
 
 
@@ -89,4 +92,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return List[index];
     }
+
+
+    public void checkForWinner() {
+        String[] line = {
+                retrieve(0) + retrieve(1) + retrieve(2),
+                retrieve(3) + retrieve(4) + retrieve(5),
+                retrieve(6) + retrieve(7) + retrieve(8),
+                retrieve(0) + retrieve(3) + retrieve(6),
+                retrieve(1) + retrieve(4) + retrieve(7),
+                retrieve(2) + retrieve(5) + retrieve(8),
+                retrieve(0) + retrieve(4) + retrieve(8),
+                retrieve(2) + retrieve(4) + retrieve(6),
+        };
+
+        for (int i=0; i < 8; i++) {
+            if (line[i].equals("xxx")) {
+                Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
+            }
+            if (line[i].equals("ooo")) {
+                Toast.makeText(this, "Computer wins!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }
