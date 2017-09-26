@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,12 +19,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static ArrayList<Button> buttonList;
     static Random random;
     Context context = this;
+    static TextView textview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        textview = (TextView) findViewById(R.id.text_view1);
 
         List = new String[9];
         x = "x";
@@ -65,12 +68,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //List[tag] = x;
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
+        textview.setText(R.string.computers_turn);
+        delay();
         computersTurn();
     }
 
 
     public void computersTurn(){
-        delay();
         random = new Random();
         int rand = random.nextInt(9);
         Button button = buttonList.get(rand);
@@ -80,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             computersTurn();
         }
+        textview.setText(R.string.your_turn);
     }
 
 
