@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
         checkForWinner();
+        boolean full = isBoardFull();
+        if (full) {
+            Toast.makeText(this, "It's a Draw!", Toast.LENGTH_SHORT).show();
+        }
         computersTurn();
     }
 
@@ -175,5 +179,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         return 100;
+    }
+
+
+    public boolean isBoardFull() {
+        for (int i=0; i < 9; i++) {
+            if (List[i] == null) {
+                return false;
+            }
+        }
+        return true;
     }
 }
