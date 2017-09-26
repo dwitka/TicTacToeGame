@@ -10,7 +10,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static android.R.attr.tag;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     static String x;
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonList.add(7, button8);
         Button button9 = (Button)findViewById(R.id.button9);
         buttonList.add(8, button9);
-
     }
 
 
@@ -61,27 +59,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int buttonId = view.getId();
         Button button = (Button)findViewById(buttonId);
-        int tag = Integer.parseInt(String.valueOf(button.getTag()));
+        //int tag = Integer.parseInt(String.valueOf(button.getTag()));
         Toast.makeText(context, String.valueOf(button.getTag()), Toast.LENGTH_LONG).show();
-        List[tag] = x;
+        //List[tag] = x;
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
-        computerMoves();
+        computersTurn();
     }
 
-    public void computerMoves(){
+
+    public void computersTurn(){
+        random = new Random();
         int rand = random.nextInt(9);
-        if (List[rand] == null) {
-            List[rand] = o;
+        Button button = buttonList.get(rand);
+        if (button.getAlpha() == 0.25f) {
+            button.setBackgroundResource(R.drawable.o_icon);
+            button.setAlpha(1.0f);
         } else {
-            computerMoves();
+            computersTurn();
         }
-        for (int index=0; index<9; index++) {
-
-            Button button = (Button)findViewById(R.id.button1);
-
-
-
     }
 
 }
