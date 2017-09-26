@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import static android.R.attr.drawable;
 import static android.R.attr.id;
+import static android.R.attr.mipMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     static String x;
@@ -31,6 +33,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int buttonId = view.getId();
         Button button = (Button)findViewById(buttonId);
         button.setAlpha(1.0f);
+        button.setBackgroundResource(R.drawable.X_icon);
+        computerMoves();
+    }
+
+    public static void computerMoves(){
+
     }
 
 }
