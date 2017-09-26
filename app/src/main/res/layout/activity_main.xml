@@ -37,7 +37,8 @@
             android:layout_gravity="center"
             android:alpha="0.25"
             android:tag="false"
-            android:background="@drawable/X_icon" />
+            android:onClick="onClick"
+            android:background="@drawable/x_icon" />
 
         <Button
             android:id="@+id/button2"
@@ -46,7 +47,8 @@
             android:layout_gravity="center"
             android:alpha="0.25"
             android:tag="false"
-            android:background="@drawable/O_icon" />
+            android:onClick="onClick"
+            android:background="@drawable/o_icon" />
 
         <Button
             android:id="@+id/button3"
@@ -55,7 +57,8 @@
             android:layout_gravity="center"
             android:alpha="0.25"
             android:tag="false"
-            android:background="@drawable/X_icon" />
+            android:onClick="onClick"
+            android:background="@drawable/x_icon" />
 
         <Button
             android:id="@+id/button4"
@@ -64,7 +67,8 @@
             android:layout_gravity="center"
             android:alpha="0.25"
             android:tag="false"
-            android:background="@drawable/O_icon" />
+            android:onClick="onClick"
+            android:background="@drawable/o_icon" />
         <Button
             android:id="@+id/button5"
             android:width="100dp"
@@ -72,7 +76,8 @@
             android:layout_gravity="center"
             android:alpha="0.25"
             android:tag="false"
-            android:background="@drawable/X_icon" />
+            android:onClick="onClick"
+            android:background="@drawable/x_icon" />
 
         <Button
             android:id="@+id/button6"
@@ -81,7 +86,8 @@
             android:layout_gravity="center"
             android:alpha="0.25"
             android:tag="false"
-            android:background="@drawable/O_icon" />
+            android:onClick="onClick"
+            android:background="@drawable/o_icon" />
 
         <Button
             android:id="@+id/button7"
@@ -90,7 +96,8 @@
             android:layout_gravity="center"
             android:alpha="0.25"
             android:tag="false"
-            android:background="@drawable/X_icon" />
+            android:onClick="onClick"
+            android:background="@drawable/x_icon" />
 
         <Button
             android:id="@+id/button8"
@@ -99,7 +106,8 @@
             android:layout_gravity="center"
             android:alpha="0.25"
             android:tag="false"
-            android:background="@drawable/O_icon" />
+            android:onClick="onClick"
+            android:background="@drawable/o_icon" />
         <Button
             android:id="@+id/button9"
             android:width="100dp"
@@ -107,7 +115,8 @@
             android:layout_gravity="center"
             android:alpha="0.25"
             android:tag="false"
-            android:background="@drawable/X_icon" />
+            android:onClick="onClick"
+            android:background="@drawable/x_icon" />
     </GridLayout>
 
 </LinearLayout>
