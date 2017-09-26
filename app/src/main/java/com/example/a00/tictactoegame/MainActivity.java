@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addButtonsToList();
     }
 
+
     public void addButtonsToList() {
         Button button1 = (Button)findViewById(R.id.button1);
         buttonList.add(0, button1);
@@ -100,40 +101,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void checkForWinner() {
-        String[] line = {
-                retrieve(0) + retrieve(1) + retrieve(2),
-                retrieve(3) + retrieve(4) + retrieve(5),
-                retrieve(6) + retrieve(7) + retrieve(8),
-                retrieve(0) + retrieve(3) + retrieve(6),
-                retrieve(1) + retrieve(4) + retrieve(7),
-                retrieve(2) + retrieve(5) + retrieve(8),
-                retrieve(0) + retrieve(4) + retrieve(8),
-                retrieve(2) + retrieve(4) + retrieve(6),
-        };
+        String[] gameLines = getGameLines();
 
         for (int i=0; i < 8; i++) {
-            if (line[i].equals("xxx")) {
+            if (gameLines[i].equals("xxx")) {
                 Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
             }
-            if (line[i].equals("ooo")) {
+            if (gameLines[i].equals("ooo")) {
                 Toast.makeText(this, "Computer wins!", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    public static int block() {
-        String line0 = retrieve(0) + retrieve(1) + retrieve(2);
-        String line1 = retrieve(3) + retrieve(4) + retrieve(5);
-        String line2 = retrieve(6) + retrieve(7) + retrieve(8);
-        String line3 = retrieve(0) + retrieve(3) + retrieve(6);
-        String line4 = retrieve(1) + retrieve(4) + retrieve(7);
-        String line5 = retrieve(2) + retrieve(5) + retrieve(8);
-        String line6 = retrieve(0) + retrieve(4) + retrieve(8);
-        String line7 = retrieve(2) + retrieve(4) + retrieve(6);
 
-        String[] line = {line0,line1,line2,line3,line4,line5,line6,line7};
+    public int block() {
+        String[] gameLines = getGameLines();
         for (int i=0; i < 8; i++) {
-            if (line[i].equals("xx ")) {
+            if (gameLines[i].equals("xx ")) {
                 if (i==0) {
                     List[2] = o;
                     return 2;
@@ -182,4 +166,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             computersTurn();
         }
     }
+
+    public String[] getGameLines(){
+        String line0 = retrieve(0) + retrieve(1) + retrieve(2);
+        String line1 = retrieve(3) + retrieve(4) + retrieve(5);
+        String line2 = retrieve(6) + retrieve(7) + retrieve(8);
+        String line3 = retrieve(0) + retrieve(3) + retrieve(6);
+        String line4 = retrieve(1) + retrieve(4) + retrieve(7);
+        String line5 = retrieve(2) + retrieve(5) + retrieve(8);
+        String line6 = retrieve(0) + retrieve(4) + retrieve(8);
+        String line7 = retrieve(2) + retrieve(4) + retrieve(6);
+
+        String[] gameLines = {line0,line1,line2,line3,line4,line5,line6,line7};
+        return gameLines;
+    }
+
 }
+
