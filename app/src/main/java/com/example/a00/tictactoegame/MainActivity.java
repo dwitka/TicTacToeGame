@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         List = new String[9];
         x = "x";
         o = "o";
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void computersTurn(){
+        delay();
         random = new Random();
         int rand = random.nextInt(9);
         Button button = buttonList.get(rand);
@@ -77,6 +79,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             button.setAlpha(1.0f);
         } else {
             computersTurn();
+        }
+    }
+
+
+    public static void delay() {
+        try
+        {
+            Thread.sleep(3000);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
         }
     }
 
