@@ -74,42 +74,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void computersTurn(){
-        //textview.setText(R.string.computers_turn);
         if (block_number == 1) {
             int index = block();
             if (index == 100){
-                random = new Random();
-                int rand = random.nextInt(9);
-                Button button = buttonList.get(rand);
-                if (button.getAlpha() == 0.25f) {
-                    button.setBackgroundResource(R.drawable.o_icon);
-                    button.setAlpha(1.0f);
-                    List[rand] = o;
-                    //checkForWinner();
-                } else {
-                    computersTurn();
-                }
+                computersPick();
             }else {
                 Button button = buttonList.get(index);
                 button.setBackgroundResource(R.drawable.o_icon);
                 button.setAlpha(1.0f);
-                //checkForWinner();
             }
         }else {
-            random = new Random();
-            int rand = random.nextInt(9);
-            Button button = buttonList.get(rand);
-            if (button.getAlpha() == 0.25f) {
-                button.setBackgroundResource(R.drawable.o_icon);
-                button.setAlpha(1.0f);
-                List[rand] = o;
-                checkForWinner();
-            } else {
-                computersTurn();
-            }
+            computersPick();
         }
+        checkForWinner();
         block_number++;
-        //textview.setText(R.string.your_turn);
     }
 
 
@@ -189,5 +167,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         return true;
+    }
+
+
+    public void computersPick(){
+        random = new Random();
+        int rand = random.nextInt(9);
+        Button button = buttonList.get(rand);
+        if (button.getAlpha() == 0.25f) {
+            button.setBackgroundResource(R.drawable.o_icon);
+            button.setAlpha(1.0f);
+            List[rand] = o;
+        } else {
+            computersTurn();
+        }
     }
 }
