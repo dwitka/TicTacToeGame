@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TicTacToeGame</string>
+    <string name="app_name"></string>
     <string name="your_turn">Your turn: click a square to place your x.</string>
     <string name="computers_turn">It is the computers turn....</string>
     <string name="you_win">You Win!</string>
