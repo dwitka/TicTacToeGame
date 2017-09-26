@@ -1,16 +1,12 @@
 package com.example.a00.tictactoegame;
 
-import android.content.Context;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Random;
 
 
@@ -20,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     static String[] List;
     public static ArrayList<Button> buttonList;
     static Random random;
-    static TextView textview;
+    TextView textview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonList = new ArrayList<>();
 
         addButtonsToList();
-
     }
 
     public void addButtonsToList() {
@@ -64,8 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int buttonId = view.getId();
         Button button = (Button)findViewById(buttonId);
-        //int tag = Integer.parseInt(String.valueOf(button.getTag()));
-        //List[tag] = x;
+        int tag = Integer.parseInt(String.valueOf(button.getTag()));
+        List[tag] = x;
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
         computersTurn();
@@ -80,9 +75,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (button.getAlpha() == 0.25f) {
             button.setBackgroundResource(R.drawable.o_icon);
             button.setAlpha(1.0f);
+            List[rand] = o;
         } else {
             computersTurn();
         }
-        textview.setText(R.string.computers_turn);
+        textview.setText(R.string.your_turn);
+    }
+
+
+    public static String retrieve(int index) {
+        if (List[index] == null) {
+            return " ";
+        }
+        return List[index];
     }
 }
