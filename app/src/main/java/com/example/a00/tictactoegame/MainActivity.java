@@ -1,6 +1,7 @@
 package com.example.a00.tictactoegame;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 
@@ -18,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     static String[] List;
     public static ArrayList<Button> buttonList;
     static Random random;
-    Context context = this;
     static TextView textview;
 
     @Override
@@ -64,17 +65,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int buttonId = view.getId();
         Button button = (Button)findViewById(buttonId);
         //int tag = Integer.parseInt(String.valueOf(button.getTag()));
-        Toast.makeText(context, String.valueOf(button.getTag()), Toast.LENGTH_LONG).show();
         //List[tag] = x;
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
-        textview.setText(R.string.computers_turn);
-        delay();
         computersTurn();
     }
 
 
     public void computersTurn(){
+        textview.setText(R.string.computers_turn);
         random = new Random();
         int rand = random.nextInt(9);
         Button button = buttonList.get(rand);
@@ -84,19 +83,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             computersTurn();
         }
-        textview.setText(R.string.your_turn);
+        textview.setText(R.string.computers_turn);
     }
-
-
-    public static void delay() {
-        try
-        {
-            Thread.sleep(3000);
-        }
-        catch(InterruptedException ex)
-        {
-            Thread.currentThread().interrupt();
-        }
-    }
-
 }
