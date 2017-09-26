@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     static String[] List;
     public static ArrayList<Button> buttonList;
     static Random random;
+    static int block_number;
     TextView textview;
 
     @Override
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         textview = (TextView) findViewById(R.id.text_view1);
-
+        block_number = 0;
         List = new String[9];
         x = "x";
         o = "o";
@@ -60,8 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int buttonId = view.getId();
         Button button = (Button)findViewById(buttonId);
-        int tag = Integer.parseInt(String.valueOf(button.getTag()));
-        List[tag] = x;
+        List[buttonList.indexOf(button)] = x;
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
         checkForWinner();
@@ -71,17 +71,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void computersTurn(){
         //textview.setText(R.string.computers_turn);
-        random = new Random();
-        int rand = random.nextInt(9);
-        Button button = buttonList.get(rand);
-        if (button.getAlpha() == 0.25f) {
-            button.setBackgroundResource(R.drawable.o_icon);
-            button.setAlpha(1.0f);
-            List[rand] = o;
-            checkForWinner();
-        } else {
-            computersTurn();
+        if (block_number == 1) {
+            int index = block();
+            if (index == 100){
+                random = new Random();
+                int rand = random.nextInt(9);
+                Button button = buttonList.get(rand);
+                if (button.getAlpha() == 0.25f) {
+                    button.setBackgroundResource(R.drawable.o_icon);
+                    button.setAlpha(1.0f);
+                    List[rand] = o;
+                    //checkForWinner();
+                } else {
+                    computersTurn();
+                }
+            }else {
+                Button button = buttonList.get(index);
+                button.setBackgroundResource(R.drawable.o_icon);
+                button.setAlpha(1.0f);
+                //checkForWinner();
+            }
+        }else {
+            random = new Random();
+            int rand = random.nextInt(9);
+            Button button = buttonList.get(rand);
+            if (button.getAlpha() == 0.25f) {
+                button.setBackgroundResource(R.drawable.o_icon);
+                button.setAlpha(1.0f);
+                List[rand] = o;
+                checkForWinner();
+            } else {
+                computersTurn();
+            }
         }
+        block_number++;
         //textview.setText(R.string.your_turn);
     }
 
@@ -116,4 +139,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public static int block() {
+        String line0 = retrieve(0) + retrieve(1) + retrieve(2);
+        String line1 = retrieve(3) + retrieve(4) + retrieve(5);
+        String line2 = retrieve(6) + retrieve(7) + retrieve(8);
+        String line3 = retrieve(0) + retrieve(3) + retrieve(6);
+        String line4 = retrieve(1) + retrieve(4) + retrieve(7);
+        String line5 = retrieve(2) + retrieve(5) + retrieve(8);
+        String line6 = retrieve(0) + retrieve(4) + retrieve(8);
+        String line7 = retrieve(2) + retrieve(4) + retrieve(6);
+
+        String[] line = {line0,line1,line2,line3,line4,line5,line6,line7};
+        for (int i=0; i < 8; i++) {
+            if (line[i].equals("xx ")) {
+                if (i==0) {
+                    List[2] = o;
+                    return 2;
+                }
+                if (i==1) {
+                    List[5] = o;
+                    return 5;
+                }
+                if (i==2 || i ==5 || i==6) {
+                    List[8] = o;
+                    return 8;
+                }
+                if (i==3 || i==7) {
+                    List[6] = o;
+                    return 6;
+                }
+                if (i==4) {
+                    List[7] = o;
+                    return 7;
+                }
+            }
+        }
+        return 100;
+    }
 }
