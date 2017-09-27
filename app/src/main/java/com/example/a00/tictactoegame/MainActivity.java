@@ -116,7 +116,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public int block() {
         String[] gameLines = getGameLines();
-        int index = blockEnd(gameLines);
+        int index;
+        index = blockEnd(gameLines);
+        if (index != 100) {
+            return index;
+        }
+        index = blockMiddle(gameLines);
         if (index != 100) {
             return index;
         }
@@ -185,6 +190,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (i == 4) {
                     List[7] = o;
                     return 7;
+                }
+            }
+        }
+        return 100;
+    }
+
+    public int blockMiddle(String[] gameLines){
+        for (int i=0; i < 8; i++) {
+            if (gameLines[i].equals("x x")) {
+                if (i == 0) {
+                    List[1] = o;
+                    return 1;
+                }
+                if (i == 1 || i == 4 || i == 6 || i == 7) {
+                    List[4] = o;
+                    return 4;
+                }
+                if (i == 2) {
+                    List[7] = o;
+                    return 7;
+                }
+                if (i == 3) {
+                    List[3] = o;
+                    return 3;
+                }
+                if (i == 5) {
+                    List[5] = o;
+                    return 5;
                 }
             }
         }
