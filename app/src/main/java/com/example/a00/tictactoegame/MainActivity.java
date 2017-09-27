@@ -72,13 +72,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void checkGameState(){
         boolean winner = checkForWinner();
         if (winner){
-            Button playButton = (Button)findViewById(R.id.button10);
-            playButton.setVisibility(View.VISIBLE);
+           setButtonToVisible();
         }else{
             boolean full = isBoardFull();
             if (full){
-                Button playButton = (Button)findViewById(R.id.button10);
-                playButton.setVisibility(View.VISIBLE);
+                setButtonToVisible();
             }else {
                 computersTurn();
             }
@@ -102,12 +100,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         boolean winner = checkForCompWinner();
         if (winner) {
-            Button playButton = (Button) findViewById(R.id.button10);
-            playButton.setVisibility(View.VISIBLE);
+            setButtonToVisible();
         }
         block_number++;
     }
 
+
+    public void setButtonToVisible(){
+        Button playButton = (Button) findViewById(R.id.button10);
+        playButton.setVisibility(View.VISIBLE);
+    }
 
     public static String retrieve(int index) {
         if (List[index] == null) {
