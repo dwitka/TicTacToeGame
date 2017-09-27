@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List[buttonList.indexOf(button)] = x;
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
+        button.setClickable(false);
 
         boolean winner = checkForWinner();
         boolean full = isBoardFull();
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Button button = buttonList.get(index);
                 button.setBackgroundResource(R.drawable.o_icon);
                 button.setAlpha(1.0f);
+                button.setClickable(false);
             }
         }else {
             computersPick();
@@ -163,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (button.getAlpha() == 0.25f) {
             button.setBackgroundResource(R.drawable.o_icon);
             button.setAlpha(1.0f);
+            button.setClickable(false);
             List[rand] = o;
         } else {
             computersTurn();
@@ -212,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return 100;
     }
+
 
     public int blockMiddle(String[] gameLines){
         for (int i=0; i < 8; i++) {
@@ -270,11 +274,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return 100;
     }
 
+
     public void playAgain(View view){
         for (int index =0;index <9; index++) {
             List[index] = null;
             Button button = buttonList.get(index);
             button.setAlpha(.25f);
+            button.setClickable(true);
             if (index%2 == 0) {
                 button.setBackgroundResource(R.drawable.x_icon);
             }else {
@@ -288,7 +294,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button playButton = (Button)findViewById(R.id.button10);
         playButton.setVisibility(View.INVISIBLE);
         block_number = 0;
-
     }
 }
 
