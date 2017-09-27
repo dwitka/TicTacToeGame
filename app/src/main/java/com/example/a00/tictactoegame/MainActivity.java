@@ -287,6 +287,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         Button playButton = (Button)findViewById(R.id.button10);
         playButton.setVisibility(View.INVISIBLE);
+        block_number = 0;
 
     }
 }

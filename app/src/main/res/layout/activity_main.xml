@@ -52,7 +52,7 @@
             android:alpha="0.25"
             android:tag="2"
             android:onClick="onClick"
-            android:background="@drawable/x_icon" />
+            android:background="@drawable/o_icon" />
 
         <Button
             android:id="@+id/button3"
