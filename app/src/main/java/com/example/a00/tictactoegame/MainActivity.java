@@ -1,5 +1,6 @@
 package com.example.a00.tictactoegame;
 
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -323,6 +324,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button playButton = (Button)findViewById(R.id.button10);
         playButton.setVisibility(View.INVISIBLE);
         block_number = 0;
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState,
+                                    PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState,
+                                       PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
     }
 }
 
