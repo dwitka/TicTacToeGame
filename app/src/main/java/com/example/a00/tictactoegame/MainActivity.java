@@ -65,9 +65,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
         button.setClickable(false);
+        checkGameState();
+    }
 
+
+    public void checkGameState(){
         boolean winner = checkForWinner();
-
         if (winner){
             Button playButton = (Button)findViewById(R.id.button10);
             playButton.setVisibility(View.VISIBLE);
