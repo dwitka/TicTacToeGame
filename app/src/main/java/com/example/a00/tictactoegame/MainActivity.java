@@ -72,11 +72,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void checkGameState(){
         boolean winner = checkForWinner();
         if (winner){
-           setButtonToVisible();
+            setButtonToVisible();
+            setAllUnClickable();
         }else{
             boolean full = isBoardFull();
             if (full){
                 setButtonToVisible();
+                setAllUnClickable();
             }else {
                 computersTurn();
             }
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boolean winner = checkForCompWinner();
         if (winner) {
             setButtonToVisible();
+            setAllUnClickable();
         }
         block_number++;
     }
@@ -110,6 +113,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button playButton = (Button) findViewById(R.id.button10);
         playButton.setVisibility(View.VISIBLE);
     }
+
+
+    public void setAllUnClickable() {
+        for (int index = 0; index < 9; index++) {
+            Button button = buttonList.get(index);
+            button.setClickable(false);
+        }
+    }
+
 
     public static String retrieve(int index) {
         if (List[index] == null) {
