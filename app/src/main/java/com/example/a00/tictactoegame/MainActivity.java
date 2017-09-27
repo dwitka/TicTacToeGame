@@ -125,6 +125,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (index != 100) {
             return index;
         }
+        index = blockBeginning(gameLines);
+        if (index != 100) {
+            return index;
+        }
         return 100;
     }
 
@@ -224,5 +228,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return 100;
     }
 
+
+    public int blockBeginning(String[] gameLines){
+        for (int i=0; i < 8; i++) {
+            if (gameLines[i].equals(" xx")) {
+                if (i==0 || i ==3|| i==6) {
+                    List[0] = o;
+                    return 0;
+                }
+                if (i==1) {
+                    List[3] = o;
+                    return 3;
+                }
+                if (i==2) {
+                    List[6] = o;
+                    return 6;
+                }
+                if (i==4) {
+                    List[1] = o;
+                    return 1;
+                }
+                if (i==5 || i==7) {
+                    List[2] = o;
+                    return 2;
+                }
+            }
+        }
+        return 100;
+    }
 }
 
