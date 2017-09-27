@@ -39,7 +39,6 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="1"
             android:onClick="onClick"
             android:clickable="false"
             android:background="@drawable/x_icon" />
@@ -50,7 +49,6 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="2"
             android:onClick="onClick"
             android:background="@drawable/o_icon" />
 
@@ -60,7 +58,6 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="3"
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
 
@@ -70,7 +67,6 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="4"
             android:onClick="onClick"
             android:background="@drawable/o_icon" />
         <Button
@@ -79,7 +75,6 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="5"
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
 
@@ -89,7 +84,6 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="6"
             android:onClick="onClick"
             android:background="@drawable/o_icon" />
 
@@ -99,7 +93,6 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="7"
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
 
@@ -109,7 +102,6 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="8"
             android:onClick="onClick"
             android:background="@drawable/o_icon" />
         <Button
@@ -118,7 +110,6 @@
             android:height="100dp"
             android:layout_gravity="center"
             android:alpha="0.25"
-            android:tag="9"
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
     </GridLayout>
