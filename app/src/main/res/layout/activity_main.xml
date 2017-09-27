@@ -19,14 +19,8 @@
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:textColor="@color/DarkSlateGray"
+        android:paddingBottom="30dp"
         android:text="@string/tic_tac_toe"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="            "/>
-
-
 
     <GridLayout
         android:id="@+id/GridLayout1"
@@ -137,8 +131,6 @@
         android:layout_marginRight="40dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/o_icon" />
-
-
 
 </LinearLayout>
 
