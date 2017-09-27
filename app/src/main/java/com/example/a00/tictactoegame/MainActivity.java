@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else {
             computersPick();
         }
-        boolean winner = checkForWinner();
+        boolean winner = checkForCompWinner();
         if (winner) {
             Button playButton = (Button) findViewById(R.id.button10);
             playButton.setVisibility(View.VISIBLE);
@@ -116,11 +116,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         for (int i=0; i < 8; i++) {
             if (gameLines[i].equals("xxx")) {
-                Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You win!", Toast.LENGTH_LONG).show();
                 return true;
             }
+        }
+        return false;
+    }
+
+
+    public boolean checkForCompWinner() {
+        String[] gameLines = getGameLines();
+
+        for (int i=0; i < 8; i++) {
             if (gameLines[i].equals("ooo")) {
-                Toast.makeText(this, "Computer wins!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Computer wins!", Toast.LENGTH_LONG).show();
                 return true;
             }
         }
@@ -168,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             button.setClickable(false);
             List[rand] = o;
         } else {
-            computersTurn();
+            computersPick();
         }
     }
 
