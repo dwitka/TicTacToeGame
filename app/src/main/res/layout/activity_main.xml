@@ -140,6 +140,6 @@
         android:text="@string/play_again"
         android:layout_marginRight="40dp"
         android:layout_marginEnd="40dp"
-        android:background="@drawable/x_icon" />
+        android:background="@drawable/o_icon" />
 
 </LinearLayout>

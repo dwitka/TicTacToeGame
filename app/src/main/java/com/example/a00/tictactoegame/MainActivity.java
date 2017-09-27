@@ -67,14 +67,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List[buttonList.indexOf(button)] = x;
         button.setBackgroundResource(R.drawable.x_icon);
         button.setAlpha(1.0f);
-        checkForWinner();
+
+        boolean winner = checkForWinner();
         boolean full = isBoardFull();
-        if (full) {
-            Toast.makeText(this, "It's a Draw!", Toast.LENGTH_LONG).show();
+        if (winner || full){
             Button playButton = (Button)findViewById(R.id.button10);
             playButton.setVisibility(View.VISIBLE);
+        }else{
+            computersTurn();
         }
-        computersTurn();
     }
 
 
@@ -91,7 +92,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else {
             computersPick();
         }
-        checkForWinner();
+        boolean winner = checkForWinner();
+        if (winner) {
+            Button playButton = (Button) findViewById(R.id.button10);
+            playButton.setVisibility(View.VISIBLE);
+        }
         block_number++;
     }
 
@@ -104,21 +109,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void checkForWinner() {
+    public boolean checkForWinner() {
         String[] gameLines = getGameLines();
 
         for (int i=0; i < 8; i++) {
             if (gameLines[i].equals("xxx")) {
                 Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
-                Button playButton = (Button)findViewById(R.id.button10);
-                playButton.setVisibility(View.VISIBLE);
+                return true;
             }
             if (gameLines[i].equals("ooo")) {
                 Toast.makeText(this, "Computer wins!", Toast.LENGTH_SHORT).show();
-                Button playButton = (Button)findViewById(R.id.button10);
-                playButton.setVisibility(View.VISIBLE);
+                return true;
             }
         }
+        return false;
     }
 
 
@@ -147,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return false;
             }
         }
+        Toast.makeText(this, "It's a Draw!", Toast.LENGTH_LONG).show();
         return true;
     }
 
