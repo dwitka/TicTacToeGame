@@ -116,29 +116,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public int block() {
         String[] gameLines = getGameLines();
-        for (int i=0; i < 8; i++) {
-            if (gameLines[i].equals("xx ")) {
-                if (i==0) {
-                    List[2] = o;
-                    return 2;
-                }
-                if (i==1) {
-                    List[5] = o;
-                    return 5;
-                }
-                if (i==2 || i ==5 || i==6) {
-                    List[8] = o;
-                    return 8;
-                }
-                if (i==3 || i==7) {
-                    List[6] = o;
-                    return 6;
-                }
-                if (i==4) {
-                    List[7] = o;
-                    return 7;
-                }
-            }
+        int index = blockEnd(gameLines);
+        if (index != 100) {
+            return index;
         }
         return 100;
     }
@@ -167,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
     public String[] getGameLines(){
         String line0 = retrieve(0) + retrieve(1) + retrieve(2);
         String line1 = retrieve(3) + retrieve(4) + retrieve(5);
@@ -179,6 +160,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String[] gameLines = {line0,line1,line2,line3,line4,line5,line6,line7};
         return gameLines;
+    }
+
+
+    public int blockEnd(String[] gameLines){
+        for (int i=0; i < 8; i++) {
+            if (gameLines[i].equals("xx ")) {
+                if (i == 0) {
+                    List[2] = o;
+                    return 2;
+                }
+                if (i == 1) {
+                    List[5] = o;
+                    return 5;
+                }
+                if (i == 2 || i == 5 || i == 6) {
+                    List[8] = o;
+                    return 8;
+                }
+                if (i == 3 || i == 7) {
+                    List[6] = o;
+                    return 6;
+                }
+                if (i == 4) {
+                    List[7] = o;
+                    return 7;
+                }
+            }
+        }
+        return 100;
     }
 
 }
