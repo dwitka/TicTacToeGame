@@ -10,8 +10,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static android.R.attr.button;
-
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     static String x;
@@ -33,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         x = "x";
         o = "o";
         buttonList = new ArrayList<>();
-
         addButtonsToList();
     }
 
@@ -70,12 +67,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button.setClickable(false);
 
         boolean winner = checkForWinner();
-        boolean full = isBoardFull();
-        if (winner || full){
+
+        if (winner){
             Button playButton = (Button)findViewById(R.id.button10);
             playButton.setVisibility(View.VISIBLE);
         }else{
-            computersTurn();
+            boolean full = isBoardFull();
+            if (full){
+                Button playButton = (Button)findViewById(R.id.button10);
+                playButton.setVisibility(View.VISIBLE);
+            }else {
+                computersTurn();
+            }
         }
     }
 
