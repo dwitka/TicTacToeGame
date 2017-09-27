@@ -10,6 +10,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static android.R.attr.button;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     static String x;
@@ -68,7 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checkForWinner();
         boolean full = isBoardFull();
         if (full) {
-            Toast.makeText(this, "It's a Draw!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "It's a Draw!", Toast.LENGTH_LONG).show();
+            Button playButton = (Button)findViewById(R.id.button10);
+            playButton.setVisibility(View.VISIBLE);
         }
         computersTurn();
     }
@@ -106,9 +110,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int i=0; i < 8; i++) {
             if (gameLines[i].equals("xxx")) {
                 Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
+                Button playButton = (Button)findViewById(R.id.button10);
+                playButton.setVisibility(View.VISIBLE);
             }
             if (gameLines[i].equals("ooo")) {
                 Toast.makeText(this, "Computer wins!", Toast.LENGTH_SHORT).show();
+                Button playButton = (Button)findViewById(R.id.button10);
+                playButton.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -255,6 +263,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         return 100;
+    }
+
+    public void playAgain(View view){
+        for (int index =0;index <9; index++) {
+            List[index] = null;
+            Button button = buttonList.get(index);
+            button.setAlpha(.25f);
+            if (index%2 == 0) {
+                button.setBackgroundResource(R.drawable.x_icon);
+            }else {
+                button.setBackgroundResource(R.drawable.o_icon);
+            }
+        }
+        String[] gameLines = getGameLines();
+        for (int index =0;index <8; index++){
+            gameLines[index] = null;
+        }
+        Button playButton = (Button)findViewById(R.id.button10);
+        playButton.setVisibility(View.INVISIBLE);
+
     }
 }
 
