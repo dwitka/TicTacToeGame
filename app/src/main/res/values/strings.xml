@@ -4,4 +4,5 @@
     <string name="computers_turn">It is the computers turn....</string>
     <string name="you_win">You Win!</string>
     <string name="tic_tac_toe">Tic Tac Toe</string>
+    <string name="play_again">Play Again!</string>
 </resources>

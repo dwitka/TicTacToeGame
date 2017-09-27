@@ -41,6 +41,7 @@
             android:alpha="0.25"
             android:tag="1"
             android:onClick="onClick"
+            android:clickable="false"
             android:background="@drawable/x_icon" />
 
         <Button
@@ -121,5 +122,24 @@
             android:onClick="onClick"
             android:background="@drawable/x_icon" />
     </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="            "/>
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:width="80dp"
+        android:height="40dp"
+        android:layout_gravity="end"
+        android:visibility="invisible"
+        android:onClick="playAgain"
+        android:text="@string/play_again"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/x_icon" />
 
 </LinearLayout>
