@@ -11,8 +11,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+/* Class Declaration */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    /**
+     * Class Fields
+     * List holds an abstract version of the current game state
+     * buttonList is an array of game button objects
+     */
     static String x;
     static String o;
     static String[] List;
@@ -25,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        /* set field values */
         textview = (TextView) findViewById(R.id.text_view1);
         block_number = 0;
         List = new String[9];
@@ -35,7 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addButtonsToList();
     }
 
-
+    /**
+     * Populate the buttonList with game button objects
+     * (these are the graphic x's and o's)
+     */
     public void addButtonsToList() {
         Button button1 = (Button)findViewById(R.id.button1);
         buttonList.add(0, button1);
@@ -57,7 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonList.add(8, button9);
     }
 
-
+    /**
+     * on click set button to x, make 100% visible, make un-clickable
+     * @param view this view represents the button clicked
+     */
     @Override
     public void onClick(View view) {
         int buttonId = view.getId();
@@ -69,7 +80,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checkGameState();
     }
 
-
+    /**
+     * After player's turn game is checked for winner
+     */
     public void checkGameState(){
         boolean winner = checkForWinner();
         if (winner){
@@ -86,7 +99,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    /**
+     * computer moves after player moves, on computers second move
+     * it tries to block a potential win by player
+     */
     public void computersTurn(){
         if (block_number == 1) {
             int index = block();
@@ -109,13 +125,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         block_number++;
     }
 
-
+    /**
+     * This method applies only to the 'play again' button.
+     * Button becomes visible on game completion.
+     */
     public void setButtonToVisible(){
         Button playButton = (Button) findViewById(R.id.button10);
         playButton.setVisibility(View.VISIBLE);
     }
 
-
+    /**
+     * Method contributes to the UX, is called on game
+     * completion to preserve final game state.
+     */
     public void setAllUnClickable() {
         for (int index = 0; index < 9; index++) {
             Button button = buttonList.get(index);
@@ -123,7 +145,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    /**
+     * @param index integer of the index to be retrieved
+     * @return retrieve item at index either 'x', 'o', or ' '.
+     */
     public static String retrieve(int index) {
         if (List[index] == null) {
             return " ";
@@ -131,7 +156,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return List[index];
     }
 
-
+    /**
+     * @return a boolean stating whether player has won
+     */
     public boolean checkForWinner() {
         String[] gameLines = getGameLines();
 
@@ -144,7 +171,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-
+    /**
+     * @return a boolean stating whether the computer has won
+     */
     public boolean checkForCompWinner() {
         String[] gameLines = getGameLines();
 
@@ -157,7 +186,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-
+    /**
+     * Method is called on computers 2nd turn to block a players potential win
+     * @return index of square that computer will block or 100
+     * (100 signifies that there is no block move)
+     */
     public int block() {
         String[] gameLines = getGameLines();
         int index;
@@ -176,7 +209,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return 100;
     }
 
-
+    /**
+     * Check if game board is saturated
+     * @return boolean
+     */
     public boolean isBoardFull() {
         for (int i=0; i < 9; i++) {
             if (List[i] == null) {
@@ -187,7 +223,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-
+    /**
+     * Method picks a square at random for the computer to play
+     */
     public void computersPick(){
         random = new Random();
         int rand = random.nextInt(9);
@@ -202,7 +240,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    /**
+     * @return a list of all the current lines that exist on the game board
+     * (a line is any sequence of three squares ex. 'ooo', 'xx ', 'oxo', ' o ', etc.)
+     */
     public String[] getGameLines(){
         String line0 = retrieve(0) + retrieve(1) + retrieve(2);
         String line1 = retrieve(3) + retrieve(4) + retrieve(5);
@@ -217,7 +258,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return gameLines;
     }
 
-
+    /**
+     * Method blocks a players potential win at end of line 'xx '
+     * @param gameLines current representation of game board as list of lines
+     * @return the index of game square to block
+     */
     public int blockEnd(String[] gameLines){
         for (int i=0; i < 8; i++) {
             if (gameLines[i].equals("xx ")) {
@@ -246,7 +291,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return 100;
     }
 
-
+    /**
+     * Method blocks a players potential win at middle of line  'x x'
+     * @param gameLines current representation of game board as list of lines
+     * @return the index of game square to block
+     */
     public int blockMiddle(String[] gameLines){
         for (int i=0; i < 8; i++) {
             if (gameLines[i].equals("x x")) {
@@ -275,7 +324,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return 100;
     }
 
-
+    /**
+     * Method blocks a players potential win at beginning of line  ' xx'
+     * @param gameLines current representation of game board as list of lines
+     * @return the index of game square to block
+     */
     public int blockBeginning(String[] gameLines){
         for (int i=0; i < 8; i++) {
             if (gameLines[i].equals(" xx")) {
@@ -304,7 +357,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return 100;
     }
 
-
+    /**
+     * on click method clears squares and resets the game
+     * @param view current view of game
+     */
     public void playAgain(View view){
         for (int index =0;index <9; index++) {
             List[index] = null;
@@ -326,14 +382,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         block_number = 0;
     }
 
-
+    /**
+     *
+     * @param outState
+     * @param outPersistentState
+     */
     @Override
     public void onSaveInstanceState(Bundle outState,
                                     PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
     }
 
-
+    /**
+     *
+     * @param savedInstanceState
+     * @param persistentState
+     */
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState,
                                        PersistableBundle persistentState) {
