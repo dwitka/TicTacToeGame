@@ -383,9 +383,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     *
-     * @param outState
-     * @param outPersistentState
+     * Saves State on activity transition, screen rotation, and shutdown
+     * @param outState Bundle in which to place your saved state.
+     * @param outPersistentState State which will be saved across reboots.
      */
     @Override
     public void onSaveInstanceState(Bundle outState,
@@ -394,9 +394,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     *
-     * @param savedInstanceState
-     * @param persistentState
+     * Retrieves State following activity transition, screen rotation, and reboot
+     * @param savedInstanceState Bundle of data saved from previous activity
+     * @param persistentState State that is retrieved after reboot
      */
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState,
