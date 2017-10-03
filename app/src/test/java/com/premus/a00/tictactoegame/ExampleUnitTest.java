@@ -1,4 +1,4 @@
-package com.example.a00.tictactoegame;
+package com.premus.a00.tictactoegame;
 
 import org.junit.Test;
 
